@@ -1,43 +1,52 @@
 public class HumanRedactor {
 
-    public Human[] addHuman(Human[] arr, Human human) {
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == null) {
-                arr[i] = human;
-                return arr;
+    public Human[] addHuman(Human[] humans, Human human) {
+        for (int i = 0; i < humans.length; i++) {
+            if (humans[i] == null) {
+                humans[i] = human;
+                return humans;
             }
         }
-        return arr;
+        return humans;
     }
 
-    public void infoHuman(Human[] arr) {
-        for (Human human : arr) {
-            System.out.print(human + ", ");
+    public void infoHuman(Human[] humans) {
+        for (int i = 0; i < humans.length; i++) {
+            if(humans[i] != null) System.out.println(humans[i].toString());
         }
     }
 
-    public void infoHuman(Human[] arr, int humanIndex) {
-        if (checkHuman(arr, humanIndex)) {
-            System.out.println("Human number: " + arr[humanIndex]);
+
+    public Human[] updateHuman(Human[] humans, Human human) {
+        for (Human human1 : humans) {
+            if (human1.getId() == human.getId()) {
+                human = human1;
+                break;
+            }
         }
+        return humans;
     }
 
-    public boolean checkHuman(Human[] arr, int humanIndex) {
-        boolean chekerHuman = humanIndex < arr.length - 1 && humanIndex >= 0;
-        if (!chekerHuman) System.out.println("There is no human!");
-        return chekerHuman;
+    public Human finfById(Human[] humans, int id) {
+        Human human = null;
+        for (int i = 0; i < humans.length; i++) {
+            if (humans[i].getId() == human.getId()) {
+                human = humans[i];
+                break;
+            }
+
+        }
+        return human;
     }
 
-    public Human[] updateHuman(Human[] arr, int indexHuman, Human value) {
-        if (checkHuman(arr, indexHuman)) {
-            arr[indexHuman] = value;
+    public Human[] deleteHuman(Human[] humans, int id) {
+        for (int i = 0; i < humans.length; i++) {
+            if (humans[i].getId() == id) {
+                humans[i] = null;
+                break;
+            }
+
         }
-        return arr;
-    }
-    public Human[] deleteHuman (Human [] arr, int humanIndex){
-        if (checkHuman(arr, humanIndex)){
-            arr[humanIndex] = null;
-        }
-        return arr;
+        return humans;
     }
 }

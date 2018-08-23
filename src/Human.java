@@ -1,7 +1,8 @@
 public class Human {
+    private static int idNext = 0;
 
-    private int id = 0;
-    private String name = "New name";
+    private int id;
+    private String name = "Name";
     private String lastName;
     private int age;
 
@@ -13,6 +14,16 @@ public class Human {
                 ", lastName='" + lastName + '\'' +
                 ", age=" + age +
                 '}';
+    }
+    public Human(){
+        this.id = idNext++;
+    }
+
+    public Human(String name, String lastName, int age) {
+        this.id = idNext++;
+        this.name = name;
+        this.lastName = lastName;
+        this.age = age;
     }
 
     public void setName(String name) {
@@ -41,16 +52,5 @@ public class Human {
 
     public int getAge() {
         return age;
-    }
-
-    public Human(int id) {
-        this.id = id;
-    }
-
-    public Human(int id, String name, String lastName, int age) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.age = age;
     }
 }
